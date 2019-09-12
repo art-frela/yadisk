@@ -1,4 +1,6 @@
-# yadisk - simple package for working with Yandex.disk (homework for [Geekbrains Go course](https://geekbrains.ru/geek_university/golang), 2nd qrt "Essentials of Golang")
+# yadisk - simple Go package for working with Yandex.disk
+
+(homework for [Geekbrains Go course](https://geekbrains.ru/geek_university/golang), 2nd qrt "Essentials of Golang")
 
 ## Purpose
 
