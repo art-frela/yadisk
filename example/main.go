@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	disk := ya.NewYaDisk("https://cloud-api.yandex.net/v1/disk/resources/download", "AgAAAAAntFapAAXeLG-mZsrwakt3vehS76AoR2s")
-	err := disk.SaveToDisk("Горы.jpg")
+	publicDisk := ya.NewPublicYaDisk("https://cloud-api.yandex.net/v1")
+	err := publicDisk.SaveToDisk("https://yadi.sk/i/5q-OcFRvNbE41A", true)
 	if err != nil {
-		log.Println("save error,", err)
+		log.Println("save error", err)
 	}
 }
