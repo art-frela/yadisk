@@ -66,6 +66,7 @@ type YaResource struct {
 }
 
 // NewYaDisk - builder YaDisk
+// cyclomatic complexity = 1
 func NewYaDisk(uri, token string) *YaDisk {
 	ya := new(YaDisk)
 	ya.url = uri
@@ -74,6 +75,7 @@ func NewYaDisk(uri, token string) *YaDisk {
 }
 
 // NewPublicYaDisk - builder of public YaDisk
+// cyclomatic complexity = 1
 func NewPublicYaDisk(uri string) *YaDisk {
 	ya := new(YaDisk)
 	ya.url = uri
@@ -81,6 +83,7 @@ func NewPublicYaDisk(uri string) *YaDisk {
 }
 
 // getDlLink - fill the download link attribute
+// cyclomatic complexity = 3
 func (ya *YaDisk) getDlLink(path string) error {
 	uri := fmt.Sprintf("%s/disk/resources/download/?path=%s", ya.url, path)
 	response, _, err := httpRequest(uri, ya.token)
@@ -97,6 +100,7 @@ func (ya *YaDisk) getDlLink(path string) error {
 }
 
 // getInfoPublicFile - fill download link and returns filename or error
+// cyclomatic complexity = 3
 func (ya *YaDisk) getInfoPublicFile(publicKey string) (filename string, err error) {
 	uri := fmt.Sprintf("%s/disk/public/resources?public_key=%s", ya.url, publicKey)
 	response, _, err := httpRequest(uri, ya.token)
@@ -114,6 +118,7 @@ func (ya *YaDisk) getInfoPublicFile(publicKey string) (filename string, err erro
 }
 
 // SaveToDisk - implement download file from YaDisk, using token
+// cyclomatic complexity = 5
 func (ya *YaDisk) SaveToDisk(pathToFile string, isPublic bool) (err error) {
 	if isPublic {
 		pathToFile, err = ya.getInfoPublicFile(pathToFile)
@@ -139,6 +144,7 @@ func (ya *YaDisk) SaveToDisk(pathToFile string, isPublic bool) (err error) {
 }
 
 // httpRequest - common part of http request
+// cyclomatic complexity = 6
 func httpRequest(uri, token string) (rc io.Reader, httpcode int, err error) {
 	// set http client: timeout of request and switch off redirect
 	c := http.Client{
